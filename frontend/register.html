@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Laundry Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+        <form id="registerForm" class="space-y-4">
+            <input type="text" id="name" placeholder="Name" class="w-full p-2 border rounded">
+            <input type="email" id="email" placeholder="Email" class="w-full p-2 border rounded">
+            <input type="password" id="password" placeholder="Password" class="w-full p-2 border rounded">
+            <select id="role" class="w-full p-2 border rounded">
+                <option value="user">User</option>
+                <option value="service_provider">Service Provider</option>
+            </select>
+            <button type="submit" class="w-full bg-green-500 text-white p-2 rounded">Register</button>
+        </form>
+        <p class="mt-4 text-center">Already have an account? <a href="login.html" class="text-blue-500">Login</a></p>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

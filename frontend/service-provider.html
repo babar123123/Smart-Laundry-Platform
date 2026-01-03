@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-laundry-green {
+            background-color: #00b894;
+        }
+
+        .text-laundry-green {
+            color: #00b894;
+        }
+
+        /* Custom scrollbar for description area */
+        textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background: #00b894;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <nav class="bg-laundry-green p-4 text-white flex justify-between items-center px-6 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <div class="bg-white px-4 py-1 rounded-md shadow-sm">
+                <span class="text-laundry-green font-bold text-lg uppercase tracking-wider">Laundry</span>
+            </div>
+            <div class="hidden md:flex space-x-6 font-medium">
+                <a href="#" class="hover:text-gray-200">Manage Services</a>
+                <a href="#" class="hover:text-gray-200">Earnings</a>
+            </div>
+        </div>
+        <button id="logoutBtn"
+            class="bg-white text-red-500 px-6 py-2 rounded-md font-bold shadow-md hover:bg-red-50 transition">
+            Logout
+        </button>
+    </nav>
+
+    <header class="bg-laundry-green text-white py-10 px-6 shadow-inner">
+        <h1 class="text-4xl font-bold mb-2">Service Provider Panel 🛠️</h1>
+        <p class="text-lg opacity-90">Add new offerings or manage your existing laundry services.</p>
+    </header>
+
+    <div class="w-full px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <div class="lg:col-span-4 xl:col-span-3">
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800 border-b-2 border-[#00b894] pb-2 inline-block">Add New
+                    Service</h2>
+
+                <form id="serviceForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Service Name</label>
+                        <input type="text" id="serviceName" placeholder="e.g. Premium Dry Clean"
+                            class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00b894] outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Description</label>
+                        <textarea id="serviceDesc" placeholder="Describe the process..." rows="5"
+                            class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00b894] outline-none transition resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Price (€)</label>
+                        <input type="number" id="servicePrice" placeholder="0.00"
+                            class="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00b894] outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Service Image</label>
+                        <input type="file" id="serviceImage"
+                            class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-laundry-green hover:file:bg-emerald-100 cursor-pointer border p-2 rounded-lg">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-[#00b894] text-white p-4 rounded-xl font-bold shadow-lg hover:bg-opacity-90 transition transform active:scale-95">
+                        Publish Service
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="lg:col-span-8 xl:col-span-9">
+
+            <!-- Security Section -->
+            <div
+                class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 mb-8 flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-800">Security</h2>
+                    <p class="text-gray-500 text-sm">Protect your account with 2FA.</p>
+                </div>
+                <button onclick="setupMFA()"
+                    class="bg-gray-900 text-white px-5 py-2 rounded-lg font-bold hover:bg-black transition-all">
+                    Enable 2FA 🛡️
+                </button>
+            </div>
+            <div id="mfaContainer" class="mb-8 max-w-md hidden"></div>
+
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">My Live Services</h2>
+                <span class="bg-emerald-100 text-[#00b894] px-4 py-1 rounded-full text-sm font-bold">Active
+                    Status</span>
+            </div>
+
+            <div id="myServices" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
