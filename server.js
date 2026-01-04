@@ -11,17 +11,29 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 app.use(helmet({
-  contentSecurityPolicy: false,
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://cdn.tailwindcss.com", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "blob:", "https://img.freepik.com", "https://*.replit.dev"],
+      connectSrc: ["'self'", "https://*.replit.dev"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
 }));
-// Removed xss-clean due to incompatibility
 
-// Trust Proxy for Replit to fix rate limit issues
+// Trust Proxy for Replit
 app.set('trust proxy', 1);
 
 // Rate Limiting (100 requests per 15 mins)
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100
+  max: 100,
+  message: "Too many requests from this IP, please try again later."
 });
 app.use(limiter);
 
