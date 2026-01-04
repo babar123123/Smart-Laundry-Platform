@@ -134,8 +134,8 @@ window.setupMFA = async function () {
             `;
         }
     } catch (err) {
-        console.error(err);
-        alert("Failed to setup MFA");
+        console.error("MFA Error:", err);
+        alert("Failed to setup MFA: " + err.message);
     }
 };
 

@@ -113,7 +113,7 @@ router.put('/:id/role', auth, adminAuth, async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports moved to bottom
 
 // -----------------------------------------------------
 // MFA ROUTES
@@ -188,3 +188,5 @@ router.post('/login/mfa', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+module.exports = router;

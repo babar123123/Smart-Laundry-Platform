@@ -17,7 +17,7 @@ app.use(helmet({
       scriptSrc: ["'self'", "https://cdn.tailwindcss.com", "'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "blob:", "https://img.freepik.com", "https://*.replit.dev", "https://images.unsplash.com", "https://via.placeholder.com"],
-      connectSrc: ["'self'", "https://*.replit.dev"],
+      connectSrc: ["'self'", "https://*.replit.dev", "http://localhost:*", "ws://localhost:*"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -59,4 +59,7 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log("=== SERVER RESTARTED (V3) ===");
+});
