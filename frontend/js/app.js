@@ -175,6 +175,7 @@ if (servicesContainer) {
             <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 card-hover flex flex-col h-full border border-gray-100 animate-fade-in" style="animation-delay: ${index * 0.1}s">
                 <div class="relative h-52 overflow-hidden">
                     <img src="${s.image ? `${API_URL.replace('/api', '')}/uploads/${s.image}` : 'https://images.unsplash.com/photo-1545173168-9f1947eebb8f?q=80&w=2071&auto=format&fit=crop'}" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Image+Missing';this.parentElement.nextElementSibling.innerText='Replit Image (Missing Local)';"
                          class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
                     <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold shadow-sm uppercase tracking-wider text-gray-800">
                         Express
@@ -505,6 +506,7 @@ window.fetchMyOrders = async function () {
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 hover:shadow-lg transition-all duration-300 animate-slide-in" style="animation-delay: ${index * 0.1}s">
                     <div class="relative w-24 h-24 flex-shrink-0">
                         <img src="${serviceImage ? `${API_URL.replace('/api', '')}/uploads/${serviceImage}` : 'https://images.unsplash.com/photo-1545173168-9f1947eebb8f?q=80&w=2071&auto=format&fit=crop'}" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/100?text=Missing';"
                              class="w-full h-full object-cover rounded-xl shadow-md">
                         <div class="absolute -bottom-2 -right-2 bg-white p-1 rounded-full shadow text-sm border border-gray-100">
                              ${statusIcon}
