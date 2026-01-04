@@ -16,7 +16,7 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://cdn.tailwindcss.com", "'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      imgSrc: ["'self'", "data:", "blob:", "https://img.freepik.com", "https://*.replit.dev", "https://images.unsplash.com", "https://via.placeholder.com"],
+      imgSrc: ["'self'", "data:", "blob:", "https://img.freepik.com", "https://*.replit.dev", "https://images.unsplash.com", "https://via.placeholder.com", "http://localhost:*"],
       connectSrc: ["'self'", "https://*.replit.dev", "http://localhost:*", "ws://localhost:*"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       objectSrc: ["'none'"],
