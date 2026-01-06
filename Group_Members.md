@@ -1,7 +1,7 @@
 # Group Members
 
 - **BABAR Muhammad**
-- **Anas TAGUI**
+- **TAGUI Anas**
 - **EGHAGHE Edoseghe George**
 - **FIFEN MENEGUEM Idiatou**
 - **YOUMBI NJANDA Steven Alan**
