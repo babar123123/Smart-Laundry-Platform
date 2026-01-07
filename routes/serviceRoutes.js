@@ -18,11 +18,36 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+// Check File Type
+function checkFileType(file, cb) {
+    const filetypes = /jpeg|jpg|png|gif|webp/;
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+        return cb(null, true);
+    } else {
+        cb(new Error('Error: Images Only!'));
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
+});
 
 
 // Add new service (Service Provider)
-router.post('/', auth, upload.single('image'), async (req, res) => {
+router.post('/', auth, (req, res, next) => {
+    upload.single('image')(req, res, function (err) {
+        if (err) {
+            return res.status(400).json({ error: err.message });
+        }
+        next();
+    });
+}, async (req, res) => {
     try {
         if (req.user.role !== 'service_provider')
             return res.status(403).json({ msg: "Only Service Provider can add services" });
